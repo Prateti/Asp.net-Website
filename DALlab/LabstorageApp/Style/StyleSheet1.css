@@ -1,0 +1,10 @@
+﻿body {
+    background-color: aliceblue;
+    background-image: url('../image/iisc.jpg');
+    /*background-image: url('../image/iisczenlabs.jpg');*/
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+

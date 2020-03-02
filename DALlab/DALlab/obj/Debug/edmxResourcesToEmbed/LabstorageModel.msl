@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LabStorageModelStoreContainer" CdmEntityContainer="LabStorageEntities">
+    <EntitySetMapping Name="details">
+      <EntityTypeMapping TypeName="LabStorageModel.detail">
+        <MappingFragment StoreEntitySet="details">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="records">
+      <EntityTypeMapping TypeName="LabStorageModel.record">
+        <MappingFragment StoreEntitySet="records">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="display_items" FunctionName="LabStorageModel.Store.display_items">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabStorageModel.display_items_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="search" FunctionName="LabStorageModel.Store.search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabStorageModel.search_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="searchitem" FunctionName="LabStorageModel.Store.searchitem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabStorageModel.searchitem_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="itemname" ColumnName="itemname" />
+          <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

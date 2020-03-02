@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DALlab.searchitem_Result>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+
+@*<p>
+    @using (Html.BeginForm("Search", "Home"))
+    {
+        @Html.TextBox("Search") <input type="submit" value="Search" style="color:aliceblue; background-color:black" />
+    }
+</p>*@
+
+<table style="background-color:black" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noofitems)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr style="background-color:darkslategrey">
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.itemname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.noofitems)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        </td>
+    </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Displayrecords")
+</div>

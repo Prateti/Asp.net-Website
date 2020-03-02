@@ -1,0 +1,75 @@
+﻿@*@model IEnumerable<DALlab.display_items_Result>*@
+@model IEnumerable<DALlab.record>
+
+@{
+    ViewBag.Title = "Displayrecords";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Display Records</h2>
+<br />
+<div>
+    <table>
+        <tr>
+
+            @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+            {
+                @Html.TextBox("s")
+                <input type="submit" value="Search" style="color:aliceblue; background-color:black" id="searchbutton" />
+
+            }
+            &nbsp;&nbsp;
+
+
+            @using (Html.BeginForm("Add", "Home", FormMethod.Get))
+            {
+                <input type="submit" value="Add" style="color:aliceblue; background-color:black" id="addbutton" />
+            }
+            &nbsp;&nbsp;
+
+            @using (Html.BeginForm("UseItem", "Home", FormMethod.Get))
+            {
+                <input type="submit" value="Use Item" style="color:aliceblue; background-color:black" id="useitembutton" />
+            }
+
+            &nbsp;&nbsp;
+        </tr>
+    </table>
+</div>
+&nbsp;&nbsp;
+
+<table style="background-color:black" class="table">
+    <tr style="background-color:black">
+        <th>
+            @Html.DisplayNameFor(model => model.category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.noofitems)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="background-color:darkslategrey">
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.noofitems)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

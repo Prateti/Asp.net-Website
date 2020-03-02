@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LabStorageModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="itemname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="noofitems" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="LabStorageEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="details" EntityType="Self.detail" />
+    <EntitySet Name="records" EntityType="Self.record" />
+    <FunctionImport Name="displayitems" ReturnType="Collection(LabStorageModel.displayitems_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="display_items" ReturnType="Collection(LabStorageModel.display_items_Result)" />
+    <FunctionImport Name="search" ReturnType="Collection(LabStorageModel.search_Result)">
+      <Parameter Name="s" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="searchitem" ReturnType="Collection(LabStorageModel.searchitem_Result)">
+      <Parameter Name="s" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="displayitems_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="noofitems" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="display_items_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="noofitems" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="search_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="noofitems" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="searchitem_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="noofitems" Nullable="true" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LabStorageModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="records">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="varchar" MaxLength="20" />
+          <Property Name="itemname" Type="varchar" MaxLength="30" />
+          <Property Name="noofitems" Type="int" />
+        </EntityType>
+        <Function Name="display_items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="s" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="searchitem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="s" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="LabStorageModelStoreContainer">
+          <EntitySet Name="details" EntityType="Self.details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="records" EntityType="Self.records" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LabStorageModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="itemname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="noofitems" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="LabStorageEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="details" EntityType="Self.detail" />
+          <EntitySet Name="records" EntityType="Self.record" />
+          <FunctionImport Name="displayitems" ReturnType="Collection(LabStorageModel.displayitems_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="display_items" ReturnType="Collection(LabStorageModel.display_items_Result)" />
+          <FunctionImport Name="search" ReturnType="Collection(LabStorageModel.search_Result)">
+          <Parameter Name="s" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="searchitem" ReturnType="Collection(LabStorageModel.searchitem_Result)">
+            <Parameter Name="s" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="displayitems_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="noofitems" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="display_items_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="noofitems" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="search_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="noofitems" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="searchitem_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="itemname" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="noofitems" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LabStorageModelStoreContainer" CdmEntityContainer="LabStorageEntities">
+          <EntitySetMapping Name="details">
+            <EntityTypeMapping TypeName="LabStorageModel.detail">
+              <MappingFragment StoreEntitySet="details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="records">
+            <EntityTypeMapping TypeName="LabStorageModel.record">
+              <MappingFragment StoreEntitySet="records">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="display_items" FunctionName="LabStorageModel.Store.display_items">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LabStorageModel.display_items_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="search" FunctionName="LabStorageModel.Store.search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LabStorageModel.search_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="searchitem" FunctionName="LabStorageModel.Store.searchitem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LabStorageModel.searchitem_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+                <ScalarProperty Name="noofitems" ColumnName="noofitems" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

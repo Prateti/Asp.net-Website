@@ -1,0 +1,12 @@
+C:\Users\prate\source\repos\DALlab\DALlab\obj\Debug\DALlab.csproj.CoreCompileInputs.cache
+C:\Users\prate\source\repos\DALlab\DALlab\bin\Debug\DALlab.dll.config
+C:\Users\prate\source\repos\DALlab\DALlab\bin\Debug\DALlab.dll
+C:\Users\prate\source\repos\DALlab\DALlab\bin\Debug\DALlab.pdb
+C:\Users\prate\source\repos\DALlab\DALlab\bin\Debug\EntityFramework.dll
+C:\Users\prate\source\repos\DALlab\DALlab\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\prate\source\repos\DALlab\DALlab\bin\Debug\EntityFramework.xml
+C:\Users\prate\source\repos\DALlab\DALlab\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\prate\source\repos\DALlab\DALlab\obj\Debug\DALlab.csproj.CopyComplete
+C:\Users\prate\source\repos\DALlab\DALlab\obj\Debug\DALlab.dll
+C:\Users\prate\source\repos\DALlab\DALlab\obj\Debug\DALlab.pdb
+C:\Users\prate\source\repos\DALlab\DALlab\obj\Debug\DALlab.csprojAssemblyReference.cache
